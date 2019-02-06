@@ -7,6 +7,10 @@
 - MySQL
 
 ![Screenshot](gitimages/shakal.png)
+
+# Made by Shakal Bears
+
+
 ![Screenshot](gitimages/vue.png)
 ![Screenshot](gitimages/mysql.png)
 ![Screenshot](gitimages/java.png)

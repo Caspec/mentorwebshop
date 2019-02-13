@@ -1,7 +1,6 @@
 # Mentor Webshop project
 - Vue.js 2.0
-- Java REST API
-- JPA / ORM
+- Node.js Express REST API
 - MySQL
 
 ![Screenshot](gitimages/shakal.png)

@@ -4,6 +4,7 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const userRouter = require('./routes/user.js')
+const cors = require('cors')
 
 
 //const bodyParser = require('body-parser')
@@ -12,6 +13,7 @@ const userRouter = require('./routes/user.js')
 
 app.use(morgan('short'))
 app.use(userRouter)
+app.use(cors)
 
 
 // root dir

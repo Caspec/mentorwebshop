@@ -44,7 +44,7 @@ router.get("/users", (req, res) => {
 })
 
 // Post new user
-router.post("/create", (req, res) => {
+router.post("/create_user", (req, res) => {
     const username = req.body.user_name.toString();
     const password = req.body.user_password.toString();
     const queryString = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?);"

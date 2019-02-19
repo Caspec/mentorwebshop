@@ -11,7 +11,6 @@ router.get("/products", (req, res) => {
     console.log("log --> Get all products: /products")
     const queryString = "SELECT product.*, image.*, category.* FROM product INNER JOIN image ON product.product_id = image.fk_product_image_id INNER JOIN category ON product.fk_category_id = category.category_id;"
     getConnection().query(queryString, (err, rows, fields) => {
-
         if (err) {
             console.log("log --> Failed to query: /products " + err)
             res.sendStatus(500)

@@ -53,5 +53,33 @@ router.post("/create_user", (req, res) => {
     })
 })
 
+// login for admin
+router.post("/login", (req, res) => {
+    const username = req.body.user_name.toString();
+    const password = req.body.user_password.toString();
+    if(username && password) {
+    const queryString = "SELECT * FROM user WHERE user_name = ? AND user_password = ?"
+    getConnection().query(queryString, [username, password], (err, results, fields) => {
+        if(results.length > 0) {
+            console.log("log --> login admin: /login successfully")
+            // noget med at reponse.redirect til en eller anden side hvis det er en success.... 
+            // evt noget session af en art...
+        }
+        if (err) {
+            console.log("log --> Failed to query: /login " + err)
+            res.sendStatus(500)
+            return
+        }
+        res.end()
+    })
+    }
+    else 
+    {
+        console.log("log --> login admin: /login please enter username and password correct")
+        res.send("please enter username and password")
+        res.end();
+    }
+})
+
 
 module.exports = router

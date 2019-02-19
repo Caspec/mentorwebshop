@@ -1,6 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const getConnection = require('./mysqlconnection.js')
+const bodyParser = require('body-parser')
+
+router.use(bodyParser.urlencoded({extended: 'false'}));
+router.use(bodyParser.json())
 
 // Gets one user by ID
 router.get("/user/:id", (req, res) => {
@@ -39,10 +43,12 @@ router.get("/users", (req, res) => {
     })
 })
 
-// Post new user --> TBD
-router.post("/user_create", (req, res) => {
-    const queryString = "INSERT INTO user (name, password) VALUES (?, ?)"
-    getConnection().query(queryString, [], [], (err, results, fields) => {
+// Post new user
+router.post("/create", (req, res) => {
+    const username = req.body.user_name.toString();
+    const password = req.body.user_password.toString();
+    const queryString = "INSERT INTO `user` (user_name, user_password) VALUES (?, ?);"
+    getConnection().query(queryString, [username, password], (err, results) => {
         if (err) {
             console.log("log --> Failed to query: /user_create " + err)
             res.sendStatus(500)

@@ -3,18 +3,23 @@
 const express = require('express')
 const app = express()
 const morgan = require('morgan')
-const userRouter = require('./routes/user.js')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 
+const userRouter = require('./routes/user.js')
+const productRouter = require('./routes/product.js')
+const orderRouter = require('./routes/order.js')
 
 //app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({extended: false}))
 
 app.use(morgan('short'))
-app.use(userRouter)
 app.use(cors())
 app.use(bodyParser.json())
+
+app.use(userRouter)
+app.use(productRouter)
+app.use(orderRouter)
 
 // root dir
 app.get("/", (req, res) => {

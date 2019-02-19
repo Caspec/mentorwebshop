@@ -3,24 +3,20 @@ const router = express.Router()
 const getConnection = require('./mysqlconnection.js')
 const bodyParser = require('body-parser')
 
-router.use(bodyParser.urlencoded({extended: 'false'}));
+router.use(bodyParser.urlencoded({ extended: 'false' }));
 router.use(bodyParser.json())
 
 // Gets one user by ID
 router.get("/user/:id", (req, res) => {
-
     console.log("log --> Fetching user id: " + req.params.id)
-
     const userId = req.params.id
     const queryString = "SELECT * FROM user WHERE user_id = ?"
     getConnection().query(queryString, [userId], (err, rows, fields) => {
-
         if (err) {
             console.log("log --> Failed to query: /user/:id " + err)
             res.sendStatus(500)
             return
         }
-
         console.log("log --> SELECT: /user/:id fetched successfully")
         res.json(rows)
     })
@@ -31,13 +27,11 @@ router.get("/users", (req, res) => {
     console.log("log --> Get all users: /users")
     const queryString = "SELECT * FROM user"
     getConnection().query(queryString, (err, rows, fields) => {
-
         if (err) {
             console.log("log --> Failed to query: /users " + err)
             res.sendStatus(500)
             return
         }
-
         console.log("log --> SELECT: /users fetched successfully")
         res.json(rows)
     })
@@ -57,6 +51,34 @@ router.post("/create_user", (req, res) => {
         console.log("log --> create new user: /user_create created successfully")
         res.end()
     })
+})
+
+// login for admin
+router.post("/login", (req, res) => {
+    const username = req.body.user_name.toString();
+    const password = req.body.user_password.toString();
+    if(username && password) {
+    const queryString = "SELECT * FROM user WHERE user_name = ? AND user_password = ?"
+    getConnection().query(queryString, [username, password], (err, results, fields) => {
+        if(results.length > 0) {
+            console.log("log --> login admin: /login successfully")
+            // noget med at reponse.redirect til en eller anden side hvis det er en success.... 
+            // evt noget session af en art...
+        }
+        if (err) {
+            console.log("log --> Failed to query: /login " + err)
+            res.sendStatus(500)
+            return
+        }
+        res.end()
+    })
+    }
+    else 
+    {
+        console.log("log --> login admin: /login please enter username and password correct")
+        res.send("please enter username and password")
+        res.end();
+    }
 })
 
 

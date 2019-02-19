@@ -5,7 +5,7 @@ import VueResource from 'vue-resource'
 import { routes } from './routes/routes';
 
 Vue.use(VueRouter)
-Vue.use (VueResource)
+Vue.use(VueResource)
 
 const router = new VueRouter({
   mode: 'history',

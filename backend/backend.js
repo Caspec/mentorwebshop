@@ -11,7 +11,7 @@ const productRouter = require('./routes/product.js')
 const orderRouter = require('./routes/order.js')
 
 //app.use(express.static('./public'))
-app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(morgan('short'))
 app.use(cors())

@@ -3,24 +3,20 @@ const router = express.Router()
 const getConnection = require('./mysqlconnection.js')
 const bodyParser = require('body-parser')
 
-router.use(bodyParser.urlencoded({extended: 'false'}));
+router.use(bodyParser.urlencoded({ extended: 'false' }));
 router.use(bodyParser.json())
 
 // Gets one user by ID
 router.get("/user/:id", (req, res) => {
-
     console.log("log --> Fetching user id: " + req.params.id)
-
     const userId = req.params.id
     const queryString = "SELECT * FROM user WHERE user_id = ?"
     getConnection().query(queryString, [userId], (err, rows, fields) => {
-
         if (err) {
             console.log("log --> Failed to query: /user/:id " + err)
             res.sendStatus(500)
             return
         }
-
         console.log("log --> SELECT: /user/:id fetched successfully")
         res.json(rows)
     })
@@ -31,13 +27,11 @@ router.get("/users", (req, res) => {
     console.log("log --> Get all users: /users")
     const queryString = "SELECT * FROM user"
     getConnection().query(queryString, (err, rows, fields) => {
-
         if (err) {
             console.log("log --> Failed to query: /users " + err)
             res.sendStatus(500)
             return
         }
-
         console.log("log --> SELECT: /users fetched successfully")
         res.json(rows)
     })

@@ -1,5 +1,6 @@
 <template>
-    <h1>Login ikke ind...</h1>
+    <h1>Login på eget ansvar !</h1>
+
 </template>
 
 <script>

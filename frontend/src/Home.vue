@@ -1,3 +1,5 @@
 <template>
-    <h1>Home component siger Walla min fætter er en header</h1>
+    <div>
+        <img src="./assets/homo.png">
+    </div>
 </template>

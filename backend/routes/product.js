@@ -25,15 +25,30 @@ router.get("/products", (req, res) => {
 router.get("/product/:id", (req, res) => {
     console.log("log --> Fetching product id: " + req.params.id)
     const productId = req.params.id
-    const queryString = "SELECT * FROM product WHERE product_id = ?"
+    const queryString = "SELECT product.*, category.* FROM product INNER JOIN category ON product.fk_category_id = category.category_id WHERE product_id = ?;"
     getConnection().query(queryString, [productId], (err, rows, fields) => {
-
         if (err) {
             console.log("log --> Failed to query: /product/:id " + err)
             res.sendStatus(500)
             return
         }
         console.log("log --> SELECT: /product/:id fetched successfully")
+        res.json(rows)
+    })
+})
+
+// Gets images to product
+router.get("/image/:id", (req, res) => {
+    console.log("log --> Fetching image id: " + req.params.id)
+    const fk_product_image_id = req.params.id
+    const queryString = "SELECT image.* FROM image WHERE fk_product_image_id = ?"
+    getConnection().query(queryString, [fk_product_image_id], (err, rows, fields) => {
+        if (err) {
+            console.log("log --> Failed to query: image id " + err)
+            res.sendStatus(500)
+            return
+        }
+        console.log("log --> SELECT: image id fetched successfully")
         res.json(rows)
     })
 })

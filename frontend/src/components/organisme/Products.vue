@@ -2,6 +2,9 @@
     <div id="gridContainer">
         
         <div class="gridItem one">
+            <div v-for="(product, index) in products" :key="index">
+                {{ product.product_name }}
+            </div>
         </div>
         <div class="gridItem two"></div>
     </div>
@@ -9,7 +12,25 @@
 
 <script>
 export default {
-    
+    data()
+    {
+        return{
+            products: []
+        }
+    },
+    methods:{
+        getProducts(){
+            this.$http.get('http://localhost:3001/products').then((res) => {
+                console.log(res.data);
+                this.products = res.data;
+            }).then((err) => {
+                console.log(err);
+            })
+        }
+    }, 
+    mounted(){
+        this.getProducts();
+    }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <img src="./assets/homo.png">
+        <h1>Dashboard loggedin...</h1>
     </div>
 </template>
 
@@ -10,6 +10,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+    
 </style>

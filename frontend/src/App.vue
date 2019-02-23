@@ -9,6 +9,7 @@
 <script>
 import Header from './components/molekyle/Header.vue'
 import Footer from './components/atom/Footer.vue'
+
 export default {
   name: 'app',
 	components: {
@@ -54,5 +55,6 @@ li {
 
 a {
   color: #42b983;
+  text-decoration: none;
 }
 </style>

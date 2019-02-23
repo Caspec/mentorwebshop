@@ -61,7 +61,9 @@ router.post("/login", (req, res) => {
     const queryString = "SELECT * FROM user WHERE user_name = ? AND user_password = ?"
     getConnection().query(queryString, [username, password], (err, results, fields) => {
         if(results.length > 0) {
-            console.log("log --> login admin: /login successfully")
+            console.log("log --> login admin: /login successfully... user found in DB")
+            console.log("log --> username: " + username +  " password: " + password)
+            //res.redirect('/dashboard')
             // noget med at reponse.redirect til en eller anden side hvis det er en success.... 
             // evt noget session af en art...
         }
@@ -76,8 +78,6 @@ router.post("/login", (req, res) => {
     else 
     {
         console.log("log --> login admin: /login please enter username and password correct")
-        res.send("please enter username and password")
-        res.end();
     }
 })
 

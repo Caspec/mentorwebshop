@@ -1,13 +1,13 @@
 <template>
     <div>
         <p>Dette er et enkelt product!</p>
-        <p>{{ thisproduct}}</p>
+        <p>{{ product }}</p>
     </div>
 </template>
  <script>
  export default {
      props: {
-         thisproduct: {
+         product: {
              required: true
          }
      }

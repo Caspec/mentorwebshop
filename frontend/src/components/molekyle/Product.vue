@@ -3,6 +3,7 @@
         <p>Dette er et enkelt product!...............</p>
         <p>{{ product.product_id }}</p>
         <p>{{ product.product_name }}</p>
+        <p>{{ product.product_price * tax | currency }}</p>
     </div>
 </template>
  <script>

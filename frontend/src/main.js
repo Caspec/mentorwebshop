@@ -12,17 +12,29 @@ const router = new VueRouter({
   routes
 });
 
+// currency filter
 Vue.filter('currency', function (value) {
   if (typeof value !== "number") {
       return value;
   }
-  var formatter = new Intl.NumberFormat('en-US', {
+  let formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 0
   });
   return formatter.format(value);
 });
+
+// Mixin with get() tax
+Vue.mixin({
+  data: function() {
+    return {
+      get tax() {
+        return 1.25;
+      }
+    }
+  }
+})
 
 new Vue({
   el: '#app',

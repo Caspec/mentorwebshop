@@ -17,9 +17,7 @@ export const Store = new Vue({
 	},
 	methods: {
 		addToCart(product){
-			const locationInCart = this.cart.findIndex(product => {
-				return product.product_id === product.product_id
-			})
+			const locationInCart = this.cart.findIndex(p => {return p.details.product_id === product.product_id})
 
 		    if (locationInCart === -1) {
 		        this.cart.push({
@@ -27,7 +25,7 @@ export const Store = new Vue({
 		          quantity: 1
 		        })
 		    } else {
-		        this.cart[locationInCart].quantity++
+				this.cart[locationInCart].quantity++
 		    }
 		},
 		removeFromCart(product_id){

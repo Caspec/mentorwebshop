@@ -1,14 +1,34 @@
 <template>
   <div class="container">
     <h1>Shopping Cart</h1>
-    <div>some</div>
-    <div>some</div>
+  <div v-for="(product, index) in cartProducts" :key="index">
+
+  </div>
+  {{ product }}
+
   </div>
 </template>
 
 
 <script>
+import { Store } from "../store/store.js";
+
 export default {
+  data(){
+    return{
+      cartProducts: []
+    }
+  },
+  computed: {
+    cart(){
+      this.cartProducts = Store.$data.cart
+      return Store.$data.cart
+      /*return Store.$data.cart.map((product) => {
+       product = product.details.product_name
+        return product
+      })*/
+    }
+  }
 
 };
 </script>

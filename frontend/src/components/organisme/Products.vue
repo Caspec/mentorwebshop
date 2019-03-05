@@ -35,7 +35,6 @@ export default {
   methods: {
     getProducts() {
       this.$http.get("http://localhost:3001/products").then(res => {
-          console.log(res.data);
           this.products = res.data;
         })
         .catch(err => {
@@ -43,7 +42,7 @@ export default {
         });
     },
     addToCart(product) {
-      // Store.addToCart(product)
+      Store.addToCart(product)
     }
   },
   mounted() {

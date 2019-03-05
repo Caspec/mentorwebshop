@@ -34,6 +34,7 @@ export default {
 .logo{
     width: 150px;
     height: 150px;
+    margin: 10px 50px;
     background-color: azure;
     grid-column: span 1;
 }

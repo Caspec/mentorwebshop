@@ -12,6 +12,9 @@
                 </ul>
             </nav>
         </div>
+        <div class="bag">
+           <img src="../../assets/bag.png" alt="whateverbag" /> "total antal"
+        </div>
     </div>
 </template>
 
@@ -24,7 +27,7 @@ export default {
 <style>
 .headerGrid{
     display: grid;
-    grid-template-columns: 0.5fr 3fr;
+    grid-template-columns: 0.5fr 3fr 1fr;
     margin-bottom: 1em;
 }
 .nav{
@@ -44,6 +47,11 @@ export default {
 }
 nav{
     margin-top: 5em;
+}
+.bag {
+    width: 100%;
+    height: 100%;
+    margin-top: 1em;
 }
 </style>
 

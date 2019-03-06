@@ -29,8 +29,8 @@ export const Store = new Vue({
 		    }
 		},
 		removeFromCart(product_id){
-			const locationInCart = this.cart.findIndex(product => {
-				return product.product_id === product_id
+			const locationInCart = this.cart.findIndex(p => {
+				return p.details.product_id === product_id
 			})
 
 			if(this.cart[locationInCart].quantity <= 1){

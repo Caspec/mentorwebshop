@@ -29,7 +29,6 @@ export default {
   data() {
     return {
       products: Store.$data.products
-      // productsData: Store.$data.products
     };
   },
   methods: {

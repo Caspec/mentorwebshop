@@ -18,7 +18,6 @@ export const Store = new Vue({
 	methods: {
 		addToCart(product){
 			const locationInCart = this.cart.findIndex(p => {return p.details.product_id === product.product_id})
-
 		    if (locationInCart === -1) {
 		        this.cart.push({
 		          details: product,
@@ -32,12 +31,19 @@ export const Store = new Vue({
 			const locationInCart = this.cart.findIndex(p => {
 				return p.details.product_id === product_id
 			})
-
 			if(this.cart[locationInCart].quantity <= 1){
 				this.cart.splice(locationInCart, 1)
 			} else {
 				this.cart[locationInCart].quantity--
 			}
+		},
+		addToQuantity(product_id){
+			const locationInCart = this.cart.findIndex(p => {
+				return p.details.product_id === product_id
+			})
+			if(this.cart[locationInCart].quantity >= 1){
+				this.cart[locationInCart].quantity++
+			} 
 		}
 	}
 });

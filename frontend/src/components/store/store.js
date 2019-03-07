@@ -14,9 +14,9 @@ export const Store = new Vue({
 				return accum + product.details.product_price * product.quantity // product.quantity
 			}, 0)
 		},
-		/*totalItems(){
+		totalItems(){
 			return this.cart.length
-		}*/
+		}
 	},
 	methods: {
 		addToCart(product){

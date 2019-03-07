@@ -13,7 +13,7 @@
             </nav>
         </div>
         <div class="bag">
-           <img src="../../assets/bag.png" alt="whateverbag" /> 
+           <img src="../../assets/bag.png" alt="whateverbag" />  <div class="totalItems">{{ totalItems }}</div>
         </div>
     </div>
 </template>
@@ -21,11 +21,11 @@
 <script>
 import { Store } from '../../components/store/store.js'
 export default {
-  /*computed:{
+  computed:{
     totalItems(){
       return Store.totalItems
     }
-  }*/
+  }
 }
 </script>
 
@@ -59,12 +59,14 @@ nav{
     margin-top: 1em;
 }
 .totalItems{
-  height: 25px;
+  height: 20px;
   width: 25px;
   background-color:crimson;
   border-radius: 50%;
   display: inline-block;
   text-align: center;
+  padding-top: 5px;
+  font-weight: bold;
 }
 </style>
 

@@ -13,14 +13,19 @@
             </nav>
         </div>
         <div class="bag">
-           <img src="../../assets/bag.png" alt="whateverbag" /> "total antal"
+           <img src="../../assets/bag.png" alt="whateverbag" /> 
         </div>
     </div>
 </template>
 
 <script>
+import { Store } from '../../components/store/store.js'
 export default {
-    
+  /*computed:{
+    totalItems(){
+      return Store.totalItems
+    }
+  }*/
 }
 </script>
 
@@ -52,6 +57,14 @@ nav{
     width: 100%;
     height: 100%;
     margin-top: 1em;
+}
+.totalItems{
+  height: 25px;
+  width: 25px;
+  background-color:crimson;
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
 }
 </style>
 

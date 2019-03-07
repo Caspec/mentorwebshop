@@ -13,7 +13,10 @@ export const Store = new Vue({
 			return this.cart.reduce((accum, product) => {
 				return accum + product.details.product_price * product.quantity // product.quantity
 			}, 0)
-		}
+		},
+		/*totalItems(){
+			return this.cart.length
+		}*/
 	},
 	methods: {
 		addToCart(product){

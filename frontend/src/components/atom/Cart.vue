@@ -16,7 +16,6 @@
       </div>
     </table>
     <div class="alignCost">Total: {{ totalCost * tax | currency }}</div>
-   
   </div>
 </template>
 

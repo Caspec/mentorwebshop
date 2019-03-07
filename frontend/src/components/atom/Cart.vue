@@ -15,6 +15,8 @@
         </tr>
       </div>
     </table>
+    <div class="alignCost">Total: {{ totalCost * tax | currency }}</div>
+   
   </div>
 </template>
 
@@ -31,6 +33,9 @@ export default {
   computed: {
     cart(){
       return Store.$data.cart
+    },
+    totalCost(){
+      return Store.totalCost
     }
   },
   methods: {
@@ -93,6 +98,12 @@ export default {
   margin: 2px;
   width: 1em;
   cursor: pointer;
+}
+
+.alignCost {
+  text-align: left;
+  padding-left: 1.2em;
+  font-weight: bold;
 }
 
 </style>

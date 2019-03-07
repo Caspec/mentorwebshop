@@ -21,13 +21,19 @@
   </div>
 </template>
  <script>
+import { Store } from "../store/store.js";
 export default {
   props: {
     product: {
       type: Object,
       required: true
     }
-  }
+  },
+  methods: {
+    addToCart(product) {
+      Store.addToCart(product)
+    }
+  },
 };
 </script>
 

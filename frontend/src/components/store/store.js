@@ -11,7 +11,7 @@ export const Store = new Vue({
 	computed: {
 		totalCost(){
 			return this.cart.reduce((accum, product) => {
-				return accum + product.product_price * 1 // product.quantity
+				return accum + product.details.product_price * product.quantity // product.quantity
 			}, 0)
 		}
 	},

@@ -29,8 +29,31 @@
           </tr>
         </div>
       </table>
-      <div class="alignCost">Total Incl. taxing: {{ totalCost * tax | currency }}</div>
-      <div><button class="checkout">Finish my order</button></div>
+      <div class="alignCost total">Total Incl. taxing: {{ totalCost * tax | currency }}</div>
+      <div>
+        <button class="checkout" @click="show = !show">Finish</button>
+      </div>
+      <transition name="fade">
+        <div class="paymethod" v-if="!show">
+          <h3>Payment</h3>
+          <img src="../../assets/payment.png" alt="payment" class="paymentImage">
+          <div class="total">
+              Total Incl. taxing: {{ totalCost * tax | currency }}
+          </div>
+          <div class="paymentContainer">
+          <label>Card Number</label>
+          <input type="number" placeholder="Card Number" class="input">
+          <label>Cardholders Name</label>
+          <input type="text" placeholder="Cardholders Name" class="input">
+          <label>Expiry Date</label>
+          <input type="number" placeholder="01 / 01 2000" class="input">
+          <label>Security Code</label>
+          <div></div>
+          <input type="number" placeholder="3 digits" class="security">
+          <button class="pay">Pay</button>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -42,6 +65,11 @@ export default {
     carts: {
       type: Array
     }
+  },
+  data() {
+    return {
+      show: true
+    };
   },
   computed: {
     totalCost() {
@@ -118,13 +146,13 @@ export default {
   font-weight: bold;
 }
 .checkout {
-  background-color: #4CAF50;
+  background-color: rgba(8, 98, 172, 0.986);
   border: none;
   color: white;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
-  display:block;
+  display: block;
   font-size: 24px;
   font-weight: bold;
   margin: 4px 2px;
@@ -132,8 +160,68 @@ export default {
   margin-left: 0.8em;
   cursor: pointer;
 }
+.pay {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 4px 2px;
+  margin-top: 1em;
+  cursor: pointer;
+}
 .left {
-    padding-left: 1.5em;
+  padding-left: 1.5em;
+}
+.paymethod {
+  background-color: rgb(255, 255, 255);
+  width: 50%;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: left;
+  text-decoration: none;
+  display: block;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 4px 2px;
+  margin-top: 1em;
+  margin-left: 0.8em;
+  margin-right: 0.5em;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.security {
+  width: 25%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+.paymentContainer {
+    margin-top: 1em;
+}
+.paymentImage {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.total {
+    color: #4caf50;
+    font-weight: bolder;
 }
 </style>
 

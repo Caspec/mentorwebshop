@@ -12,7 +12,7 @@
         <p>{{ product.product_description }}</p>
       </div>
       <div class="price">
-        <h3>Price: {{ product.product_price * tax | currency }}</h3>
+        <h3>Price: {{ product.product_price | currency }}</h3>
       </div>
       <div class="add">
         <button class="button" name="addToCart" @click="addToCart(product)">Add to cart</button>

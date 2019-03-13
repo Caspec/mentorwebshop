@@ -13,7 +13,7 @@
             </nav>
         </div>
         <div class="bag">
-           <img src="../../assets/bag.png" alt="whateverbag" />  <div class="totalItems">{{ totalItems }}</div>
+           <router-link :to="{name: 'checkout', params: {carts: cart}}"><img src="../../assets/bag.png" alt="whateverbag" /><div class="totalItems">{{ totalItems }}</div></router-link>
         </div>
     </div>
 </template>
@@ -24,6 +24,9 @@ export default {
   computed:{
     totalItems(){
       return Store.totalItems
+    },
+    cart(){
+        return Store.$data.cart
     }
   }
 }
@@ -67,6 +70,7 @@ nav{
   text-align: center;
   padding-top: 5px;
   font-weight: bold;
+  color: white;
 }
 </style>
 

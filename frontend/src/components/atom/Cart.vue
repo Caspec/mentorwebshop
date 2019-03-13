@@ -10,12 +10,13 @@
       <div v-for="(product, index) in cart" :key="index">
         <tr class="table_row">
           <td>{{ product.details.product_name }}</td>
-          <td>{{ product.details.product_price * tax | currency }}</td>
+          <td>{{ product.details.product_price | currency }}</td>
           <td>{{ product.quantity }} <button class="add_button"  @click="addToQuantity(product.details.product_id)">+</button>  <button class="subtract_button" @click="removeFromCart(product.details.product_id)">-</button></td>
         </tr>
       </div>
     </table>
-    <div class="alignCost">Total: {{ totalCost * tax | currency }}</div>
+    <div class="alignCost">Total Incl. taxing: {{ totalCost * tax | currency }}</div>
+    <div><router-link :to="{name: 'checkout', params: {carts: cart}}"><button class="checkout">Checkout</button></router-link></div>
   </div>
 </template>
 
@@ -26,7 +27,6 @@ import { Store } from "../store/store.js";
 export default {
   data(){
     return{
-      cartProducts: []
     }
   },
   computed: {
@@ -38,9 +38,6 @@ export default {
     }
   },
   methods: {
-     addToCart(product) {
-      Store.addToCart(product)
-    },
     removeFromCart(product_id){
       Store.removeFromCart(product_id)
     },
@@ -105,4 +102,18 @@ export default {
   font-weight: bold;
 }
 
+.checkout {
+  background-color: rgba(8, 98, 172, 0.986);
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 4px 2px;
+  margin-top: 2em;
+  cursor: pointer;
+}
 </style>

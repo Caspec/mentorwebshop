@@ -20,7 +20,7 @@
 
 <script>
 import { Store } from "../store/store.js";
-import Cart from "../atom/Cart.vue";
+import Cart from "../molekyle/Cart";
 
 export default {
   components: {

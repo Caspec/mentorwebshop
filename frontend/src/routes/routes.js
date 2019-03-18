@@ -3,7 +3,7 @@ import Home from '../Home.vue';
 import Login from '../components/atom/Login.vue';
 import Dashboard from '../components/atom/Dashboard.vue';
 import Product from '../components/molekyle/Product.vue';
-import Checkout from '../components/atom/Checkout.vue';
+import Checkout from '../components/molekyle/Checkout.vue';
 
 export const routes = [
     { path: '/', component: Home },

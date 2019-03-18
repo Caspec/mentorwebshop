@@ -30,9 +30,7 @@
         </div>
       </table>
       <div class="alignCost total">Total Incl. taxing: {{ totalCost * tax | currency }}</div>
-      <div>
-        <button class="checkout" @click="show = !show">Finish</button>
-      </div>
+      
       <transition name="fade">
         <div class="paymethod" v-if="!show">
           <h3>Payment</h3>
@@ -54,6 +52,9 @@
           </div>
         </div>
       </transition>
+      <div>
+        <button class="checkout" @click="show = !show">Finish</button>
+      </div>
     </div>
   </div>
 </template>

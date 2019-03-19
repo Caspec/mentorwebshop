@@ -2,6 +2,7 @@
 <div>
     <div class="containerLogin">
         <table>
+            
             <tr>
                 <td><label>Brugernavn</label></td><td><input class="input" type="text" name="user_name" placeholder="username" v-model="user_name"></td><td></td>
             </tr>
@@ -12,6 +13,7 @@
                 <td></td><td><button class="button" name="login" @click="login" type="submit">Login to Admin</button></td><td></td>
             </tr>
         </table>
+        <p v-if="err" class="red">Username or Password is sjakal, try again !</p>
     </div>
 </div>
 </template>
@@ -21,14 +23,20 @@ export default {
     data(){
         return {
             user_name: '',
-            user_password: ''
+            user_password: '',
+            err: false
         }
     },
     methods: {
         login(){
          this.$http.post('http://localhost:3001/login', { user_name: this.user_name, user_password: this.user_password })
-        .then ((res) => console.log(res))
-        .catch ((error) => console.log(error))
+        .then ((res) => {
+            if(res.status == "200"){
+                console.log("Hurra Sjakal")
+                this.$router.push("/dashboard")
+            }
+        })
+        .catch ((error) => {this.err = true})
     }
     }
 }
@@ -60,6 +68,9 @@ table {
 }
 label {
     font-size: 20px;
+}
+.red{
+    color: red;
 }
 </style>
 

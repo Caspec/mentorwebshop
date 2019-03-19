@@ -63,9 +63,11 @@ router.post("/login", (req, res) => {
         if(results.length > 0) {
             console.log("log --> login admin: /login successfully... user found in DB")
             console.log("log --> username: " + username +  " password: " + password)
-            //res.redirect('/dashboard')
-            // noget med at reponse.redirect til en eller anden side hvis det er en success.... 
-            // evt noget session af en art...
+            res.sendStatus(200)
+        }
+        else{
+            console.log("log --> User does not exist")
+            res.sendStatus(404)
         }
         if (err) {
             console.log("log --> Failed to query: /login " + err)
@@ -78,6 +80,7 @@ router.post("/login", (req, res) => {
     else 
     {
         console.log("log --> login admin: /login please enter username and password correct")
+        res.sendStatus(404)
     }
 })
 

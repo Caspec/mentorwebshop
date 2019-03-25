@@ -50,6 +50,9 @@
               <td></td>
             </tr>
             <tr>
+              <td class="align"><label>Category</label></td><td></td>
+            </tr>
+            <tr>
               <td>
                 <select class="dropdown" v-model="fk_category_id" disabled>
                   <option selected="selected" disabled>Please select one</option>

@@ -59,7 +59,6 @@ router.post("/productadd", (req, res) => {
     const product_description = req.body.product_description.toString();
     const product_price = req.body.product_price.toString();
     const fk_category_id = req.body.fk_category_id.toString();
-    console.log("name " + product_name)
     const queryString = "INSERT INTO `product` (product_name, product_description, product_price, fk_category_id) VALUES (?, ?, ?, ?);"
     getConnection().query(queryString, [product_name, product_description, product_price, fk_category_id], (err, results) => {
         if (err) {
@@ -68,6 +67,40 @@ router.post("/productadd", (req, res) => {
             return
         }
         console.log("log --> create new product: /product_create created successfully")
+        res.end()
+    })
+})
+
+// Edit a product
+router.put("/productedit", (req, res) => {
+    const product_id = req.body.product_id.toString();
+    const product_name = req.body.product_name.toString();
+    const product_description = req.body.product_description.toString();
+    const product_price = req.body.product_price.toString();
+    const fk_category_id = req.body.fk_category_id.toString();
+    const queryString = "UPDATE product SET product_name = ?, product_description = ?, product_price = ?, fk_category_id = ? WHERE product_id = ? ;"
+    getConnection().query(queryString, [product_name, product_description, product_price, fk_category_id, product_id], (err, results) => {
+        if (err) {
+            console.log("log --> Failed to query: /product_edit " + err)
+            res.sendStatus(500)
+            return
+        }
+        console.log("log --> edit product: /product_edit edited successfully")
+        res.end()
+    })
+})
+
+// Delete a product
+router.delete("/productdelete/:id", (req, res) => {
+    const product_id = req.params.id;
+    const queryString = "DELETE FROM product WHERE product_id = ? ;"
+    getConnection().query(queryString, [product_id], (err, results) => {
+        if (err) {
+            console.log("log --> Failed to query: /product_delete " + err)
+            res.sendStatus(500)
+            return
+        }
+        console.log("log --> delete product: /product_delete delete successfully")
         res.end()
     })
 })

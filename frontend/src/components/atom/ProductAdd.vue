@@ -15,7 +15,7 @@
             </tr>
             <tr>
               <td>
-                <input class="input" type="text" name="product_name" placeholder="Product Name" v-model="product_name">
+                <input class="input" type="text" name="product_name" placeholder="Product Name" v-model="product_name" required>
               </td>
               <td></td>
             </tr>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
               <td>
-                  <textarea class="input" placeholder="Product Description" cols="60" rows="15" name="product_description" v-model="product_description"></textarea>
+                  <textarea class="input" placeholder="Product Description" cols="60" rows="15" name="product_description" v-model="product_description" required></textarea>
               </td>
               <td></td>
             </tr>
@@ -39,7 +39,7 @@
             </tr>
             <tr>
               <td>
-                <input class="input" type="text" name="product_price" placeholder="Product Price" v-model="product_price">
+                <input class="input" type="text" name="product_price" placeholder="Product Price" v-model="product_price" required>
               </td>
               <td></td>
             </tr>

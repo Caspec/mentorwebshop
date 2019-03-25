@@ -24,7 +24,7 @@
           </tr>
           <tr>
             <td>
-              <input class="input" type="text" placeholder="Search product">
+              <input class="input" v-model="search" type="text" placeholder="Search product">
             </td>
             <td></td>
           </tr>
@@ -43,7 +43,7 @@
               <td>{{ product.product_description }}</td>
               <td>{{ product.product_price | currency }}</td>
               <td>
-               <router-link :to="{name: 'productedit', params: {id: product.product_id, product: product}}"><button class="edit">Edit</button></router-link> <router-link :to="{name: 'productdelete', params: {id: product.product_id, product: product}}"><button class="delete">Delete</button></router-link>
+               <router-link :to="{name: 'productedit', params: {id: product.product_id, product: product, user_name: user_name}}"><button class="edit">Edit</button></router-link> <router-link :to="{name: 'productdelete', params: {id: product.product_id, product: product, user_name: user_name}}"><button class="delete">Delete</button></router-link>
               </td>
             </tr>
           </div>
@@ -64,7 +64,8 @@ export default {
   },
   data(){
       return {
-          products: Store.$data.products
+          products: Store.$data.products,
+          search: ''
       }
   },
   methods: {

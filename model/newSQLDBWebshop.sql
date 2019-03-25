@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `mentorwebshop`.`product` (
   CONSTRAINT `fk_product_category1`
     FOREIGN KEY (`fk_category_id`)
     REFERENCES `mentorwebshop`.`category` (`category_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `mentorwebshop`.`image` (
   CONSTRAINT `fk_image_product1`
     FOREIGN KEY (`fk_product_image_id`)
     REFERENCES `mentorwebshop`.`product` (`product_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -105,7 +105,7 @@ CREATE TABLE IF NOT EXISTS `mentorwebshop`.`orders` (
   CONSTRAINT `fk_orders_user`
     FOREIGN KEY (`fk_user_id`)
     REFERENCES `mentorwebshop`.`user` (`user_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
@@ -128,7 +128,7 @@ CREATE TABLE IF NOT EXISTS `mentorwebshop`.`orderline` (
   CONSTRAINT `fk_orderline_product1`
     FOREIGN KEY (`fk_product_orderline_id`)
     REFERENCES `mentorwebshop`.`product` (`product_id`)
-    ON DELETE NO ACTION
+    ON DELETE CASCADE
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;

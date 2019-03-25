@@ -9,6 +9,7 @@ const bodyParser = require('body-parser')
 const userRouter = require('./routes/user.js')
 const productRouter = require('./routes/product.js')
 const orderRouter = require('./routes/order.js')
+const categoryRouter = require('./routes/category.js')
 
 //app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -20,6 +21,7 @@ app.use(bodyParser.json())
 app.use(userRouter)
 app.use(productRouter)
 app.use(orderRouter)
+app.use(categoryRouter)
 
 // root dir
 app.get("/", (req, res) => {

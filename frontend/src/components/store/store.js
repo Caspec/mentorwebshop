@@ -4,7 +4,7 @@ import products from '../organisme/Products.vue'
 export const Store = new Vue({
 	data() {
 	    return {
-	    	products,
+				products,
 	    	cart: []
 	    };
 	},

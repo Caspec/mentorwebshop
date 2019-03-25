@@ -2,12 +2,11 @@
 <div>
     <div class="containerLogin">
         <table>
-            
             <tr>
-                <td><label>Brugernavn</label></td><td><input class="input" type="text" name="user_name" placeholder="username" v-model="user_name"></td><td></td>
+                <td><label>Brugernavn</label></td><td><input class="input" type="text" name="user_name" placeholder="Username" v-model="user_name"></td><td></td>
             </tr>
             <tr>
-                <td><label>Password</label></td><td><input class="input" type="text" name="user_password" placeholder="password" v-model="user_password"></td><td></td>
+                <td><label>Password</label></td><td><input class="input" name="user_password" placeholder="Password" v-model="user_password" :type="passwordFieldType"></td><td><button class="showHide" type="password" @click="showHidePassword">Show / Hide</button></td>
             </tr>
             <tr>
                 <td></td><td><button class="button" name="login" @click="login" type="submit">Login to Admin</button></td><td></td>
@@ -24,6 +23,7 @@ export default {
         return {
             user_name: '',
             user_password: '',
+            passwordFieldType: 'password',
             err: false
         }
     },
@@ -32,11 +32,13 @@ export default {
          this.$http.post('http://localhost:3001/login', { user_name: this.user_name, user_password: this.user_password })
         .then ((res) => {
             if(res.status == "200"){
-                console.log("Hurra Sjakal")
-                this.$router.push("/dashboard")
+                this.$router.push({name: 'dashboard', params: {id: this.user_name, user_name: this.user_name}})
             }
         })
         .catch ((error) => {this.err = true})
+    },
+    showHidePassword(){
+        this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password'
     }
     }
 }
@@ -71,6 +73,17 @@ label {
 }
 .red{
     color: red;
+}
+.showHide{
+  background-color: rgba(8, 98, 172, 0.986);
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 24px;
+  margin-left: 75px;
+  cursor: pointer;
 }
 </style>
 

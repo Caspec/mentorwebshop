@@ -53,4 +53,23 @@ router.get("/image/:id", (req, res) => {
     })
 })
 
+// Create a new product
+router.post("/productadd", (req, res) => {
+    const product_name = req.body.product_name.toString();
+    const product_description = req.body.product_description.toString();
+    const product_price = req.body.product_price.toString();
+    const fk_category_id = req.body.fk_category_id.toString();
+    console.log("name " + product_name)
+    const queryString = "INSERT INTO `product` (product_name, product_description, product_price, fk_category_id) VALUES (?, ?, ?, ?);"
+    getConnection().query(queryString, [product_name, product_description, product_price, fk_category_id], (err, results) => {
+        if (err) {
+            console.log("log --> Failed to query: /product_create " + err)
+            res.sendStatus(500)
+            return
+        }
+        console.log("log --> create new product: /product_create created successfully")
+        res.end()
+    })
+})
+
 module.exports = router

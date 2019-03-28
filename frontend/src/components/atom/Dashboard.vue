@@ -1,12 +1,14 @@
 <template>
   <div class="container">
-    <h1>Welcome to Administrator Dashboard !</h1>
-    <div class="containerInfo">
+    <div class="header">
+      <h1>Welcome to Administrator Dashboard !</h1>
+
       <p>
         You are loggedin as:
         <span class="bold">{{ user_name }}</span>
       </p>
     </div>
+
     <div class="containerCrud">
       <div class="containerCrud one">
         <table>
@@ -31,11 +33,11 @@
         </table>
 
         <table class="tabl">
-          <tr class="table_row">
+          <tr class="table_row theader" >
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
-            <th>Actions</th>
+            <th class="center">Actions</th>
           </tr>
           <div v-for="(product, index) in products" :key="index">
             <tr class="table_row">
@@ -85,6 +87,14 @@ export default {
 </script>
 
 <style scoped>
+.center{
+  text-align: center;
+}
+.theader{
+  height: 2.5em;
+  color:  #42b983;
+  font-size: 1.3em;
+}
 .container {
   width: 95%;
   height: auto;
@@ -94,10 +104,8 @@ export default {
   border: 5px solid black;
   padding-top: 1em;
   padding-bottom: 1em;
-}
-.containerInfo {
-  margin-top: 2em;
-  margin-bottom: 2em;
+  display: grid;
+
 }
 .containerCrud {
   width: 95%;
@@ -106,12 +114,9 @@ export default {
   margin-left: 1em;
   padding-top: 1em;
   padding-bottom: 1em;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto;
 }
 .one {
-  grid-column: span 2;
+  grid-column: span 2/3;
 }
 .two {
   grid-template-columns: span 1;
@@ -145,6 +150,7 @@ export default {
 .tabl {
   width: 100%;
   border: 1px solid black;
+  margin: 2em 0;
 }
 .table_row {
   display: grid;

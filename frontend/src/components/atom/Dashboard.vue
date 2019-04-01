@@ -33,7 +33,7 @@
         </table>
 
         <table class="tabl">
-          <tr class="table_row theader" >
+          <tr class="table_row theader">
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>

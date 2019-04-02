@@ -24,7 +24,7 @@
               <button class="subtract_button" @click="removeFromCart(product.details.product_id)">-</button>
             </td>
             <td>
-              <img :src="'../src/assets/' + product.details.image_name">
+              <img :src="'../src/assets/' + product.details.product_image">
             </td>
           </tr>
         </div>

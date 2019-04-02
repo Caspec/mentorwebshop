@@ -9,7 +9,7 @@ router.use(bodyParser.json())
 // Gets all products
 router.get("/products", (req, res) => {
     console.log("log --> Get all products: /products")
-    const queryString = "SELECT product.*, image.*, category.* FROM product INNER JOIN image ON product.product_id = image.fk_product_image_id INNER JOIN category ON product.fk_category_id = category.category_id;"
+    const queryString = "SELECT product.*, category.* FROM product INNER JOIN category ON product.fk_category_id = category.category_id;"
     getConnection().query(queryString, (err, rows, fields) => {
         if (err) {
             console.log("log --> Failed to query: /products " + err)
@@ -53,14 +53,30 @@ router.get("/image/:id", (req, res) => {
     })
 })
 
+// Gets all images
+router.get("/images", (req, res) => {
+    console.log("log --> Get all images: /images")
+    const queryString = "SELECT * FROM image"
+    getConnection().query(queryString, (err, rows, fields) => {
+        if (err) {
+            console.log("log --> Failed to query: /image " + err)
+            res.sendStatus(500)
+            return
+        }
+        console.log("log --> SELECT: /image fetched successfully")
+        res.json(rows)
+    })
+})
+
 // Create a new product
 router.post("/productadd", (req, res) => {
     const product_name = req.body.product_name.toString();
     const product_description = req.body.product_description.toString();
     const product_price = req.body.product_price.toString();
+    const product_image = req.body.image_name.toString();
     const fk_category_id = req.body.fk_category_id.toString();
-    const queryString = "INSERT INTO `product` (product_name, product_description, product_price, fk_category_id) VALUES (?, ?, ?, ?);"
-    getConnection().query(queryString, [product_name, product_description, product_price, fk_category_id], (err, results) => {
+    const queryString = "INSERT INTO `product` (product_name, product_description, product_price, product_image, fk_category_id) VALUES (?, ?, ?, ?, ?);"
+    getConnection().query(queryString, [product_name, product_description, product_price, product_image, fk_category_id], (err, results) => {
         if (err) {
             console.log("log --> Failed to query: /product_create " + err)
             res.sendStatus(500)
@@ -77,9 +93,10 @@ router.put("/productedit", (req, res) => {
     const product_name = req.body.product_name.toString();
     const product_description = req.body.product_description.toString();
     const product_price = req.body.product_price.toString();
+    const product_image = req.body.product_image.toString();
     const fk_category_id = req.body.fk_category_id.toString();
-    const queryString = "UPDATE product SET product_name = ?, product_description = ?, product_price = ?, fk_category_id = ? WHERE product_id = ? ;"
-    getConnection().query(queryString, [product_name, product_description, product_price, fk_category_id, product_id], (err, results) => {
+    const queryString = "UPDATE product SET product_name = ?, product_description = ?, product_price = ?, product_image = ?, fk_category_id = ? WHERE product_id = ? ;"
+    getConnection().query(queryString, [product_name, product_description, product_price, product_image, fk_category_id, product_id], (err, results) => {
         if (err) {
             console.log("log --> Failed to query: /product_edit " + err)
             res.sendStatus(500)

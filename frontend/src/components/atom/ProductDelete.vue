@@ -73,7 +73,9 @@
             </tr>
           </table>
         </div>
-        <div class="containerCrud two"></div>
+        <div class="containerCrud two">
+          <img :src="'./src/assets/' + product.product_image" />
+        </div>
       </div>
     </div>
   </div>

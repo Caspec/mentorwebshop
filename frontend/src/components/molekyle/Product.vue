@@ -5,7 +5,7 @@
         <h1>{{ product.product_name }}</h1>
       </div>
       <div class="image">
-        <img :src="'../src/assets/' + product.image_name">
+        <img :src="'../src/assets/' + product.product_image">
       </div>
       <div class="desc">
         <h3>Description about the product:</h3>

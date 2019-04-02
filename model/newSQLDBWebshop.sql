@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS `mentorwebshop`.`product` (
   `product_name` VARCHAR(1000) NULL DEFAULT NULL,
   `product_description` VARCHAR(1000) NULL DEFAULT NULL,
   `product_price` DOUBLE NULL DEFAULT NULL,
+  `product_image` VARCHAR(1000) NULL DEFAULT NULL,
   `fk_category_id` INT(11) NOT NULL,
   PRIMARY KEY (`product_id`, `fk_category_id`),
   INDEX `fk_product_category1_idx` (`fk_category_id` ASC),
@@ -59,25 +60,6 @@ CREATE TABLE IF NOT EXISTS `mentorwebshop`.`product` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
-
-
--- -----------------------------------------------------
--- Table `mentorwebshop`.`image`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mentorwebshop`.`image` (
-  `image_id` INT(11) NOT NULL AUTO_INCREMENT,
-  `image_name` VARCHAR(1000) NULL DEFAULT NULL,
-  `fk_product_image_id` INT(11) NOT NULL,
-  PRIMARY KEY (`image_id`, `fk_product_image_id`),
-  INDEX `fk_image_product1_idx` (`fk_product_image_id` ASC),
-  CONSTRAINT `fk_image_product1`
-    FOREIGN KEY (`fk_product_image_id`)
-    REFERENCES `mentorwebshop`.`product` (`product_id`)
-    ON DELETE CASCADE
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8;
-
 
 -- -----------------------------------------------------
 -- Table `mentorwebshop`.`user`
@@ -147,16 +129,10 @@ INSERT INTO `mentorwebshop`.`category` (`category_name`) VALUES ('Indoors');
 INSERT INTO `mentorwebshop`.`category` (`category_name`) VALUES ('Outdoors');
 
 -- Product
-INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `fk_category_id`) VALUES ('Novomatic Slot Machine', 'A slot machine with 12 nice games', '10000', '1');
-INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `fk_category_id`) VALUES ('MSI Dragon area-51-xx', 'A brand new computer with all the things you need', '5000', '2');
-INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `fk_category_id`) VALUES ('Lemon Tree', 'A very nice tree for indoors', '30', '3');
-INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `fk_category_id`) VALUES ('Tree house', 'A tree house with all the fun you want', '500', '4');
-
--- Image
-INSERT INTO `mentorwebshop`.`image` (`image_name`, `fk_product_image_id`) VALUES ('whatever.png', '1');
-INSERT INTO `mentorwebshop`.`image` (`image_name`, `fk_product_image_id`) VALUES ('whatever.png', '2');
-INSERT INTO `mentorwebshop`.`image` (`image_name`, `fk_product_image_id`) VALUES ('whatever.png', '3');
-INSERT INTO `mentorwebshop`.`image` (`image_name`, `fk_product_image_id`) VALUES ('whatever.png', '4');
+INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `product_image`, `fk_category_id`) VALUES ('Novomatic Slot Machine', 'A slot machine with 12 nice games', '10000', 'whatever.png', '1');
+INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `product_image`, `fk_category_id`) VALUES ('MSI Dragon area-51-xx', 'A brand new computer with all the things you need', '5000', 'whatever.png', '2');
+INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `product_image`, `fk_category_id`) VALUES ('Lemon Tree', 'A very nice tree for indoors', '30', 'whatever.png', '3');
+INSERT INTO `mentorwebshop`.`product` (`product_name`, `product_description`, `product_price`, `product_image`, `fk_category_id`) VALUES ('Tree house', 'A tree house with all the fun you want', '500', 'whatever.png', '4');
 
 -- Orders
 INSERT INTO `mentorwebshop`.`orders` (`orders_status`, `orders_recived`, `orders_sent`, `fk_user_id`) VALUES ('Godkendt', '2019-02-11', '2019-02-11', '1');

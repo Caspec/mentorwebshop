@@ -4,12 +4,11 @@
       <div v-for="(product, index) in products" :key="index">
           <div class="container"> 
             <div class="headline"><h1><router-link :to="{name: 'product', params: {id: product.product_id, product: product}}">{{ product.product_name }}</router-link></h1></div>
-            <div class="image"><router-link :to="{name: 'product', params: {id: product.product_id, product: product}}"><img :src="'./src/assets/' + product.image_name" /></router-link></div>
+            <div class="image"><router-link :to="{name: 'product', params: {id: product.product_id, product: product}}"><img :src="'./src/assets/' + product.product_image" /></router-link></div>
             <div class="desc"><h3>Description about the product:</h3> <p>{{ product.product_description }}</p></div>
             <div class="price"><h3>Price: {{ product.product_price | currency }}</h3></div>
             <div class="add"><button class="button" name="addToCart" @click="addToCart(product)">Add to cart</button></div>
           </div>  
-
       </div>
     </div>
     <div class="gridItem two">

@@ -87,6 +87,24 @@
             </tr>
             <tr>
               <td class="align">
+                <label>Product Image</label>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <input
+                  class="input"
+                  type="text"
+                  name="product_image"
+                  v-model="product_image"
+                  required
+                >
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="align">
                 <label>Category</label>
               </td>
               <td></td>
@@ -116,7 +134,9 @@
             </tr>
           </table>
         </div>
-        <div class="containerCrud two"></div>
+        <div class="containerCrud two">
+          <img :src="'./src/assets/' + product.product_image" />
+          </div>
       </div>
     </div>
   </div>
@@ -138,6 +158,7 @@ export default {
       product_name: this.product.product_name,
       product_description: this.product.product_description,
       product_price: this.product.product_price,
+      product_image: this.product.product_image,
       fk_category_id: this.product.fk_category_id,
       category: []
     };
@@ -166,6 +187,7 @@ export default {
           product_name: this.product_name,
           product_description: this.product_description,
           product_price: this.product_price,
+          product_image: this.product_image,
           fk_category_id: this.fk_category_id
         })
         .then(res => {

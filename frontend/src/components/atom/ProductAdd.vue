@@ -45,6 +45,18 @@
             </tr>
             <tr>
               <td class="align">
+                <label>Product Image name</label>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <input class="input" type="text" name="image_name" placeholder="Product Image name" v-model="image_name" required>
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td class="align">
                 <label>Category</label>
               </td>
               <td></td>
@@ -90,6 +102,7 @@ export default {
       product_description: "",
       product_price: 0,
       fk_category_id: 0,
+      image_name: "",
       category: []
     };
   },
@@ -100,7 +113,8 @@ export default {
           product_name: this.product_name,
           product_description: this.product_description,
           product_price: this.product_price,
-          fk_category_id: this.fk_category_id
+          image_name: this.image_name,
+          fk_category_id: this.fk_category_id,
         })
         .then(res => {
           if (res.status == "200") {

@@ -1,6 +1,6 @@
 <template>
 <div class="footer">
-    <p class="margin bolder">Dette er Sjakal A/S copyright &copy; &reg; &trade;</p>
+    <p class="margin bolder">Sjakal A/S copyright 2019 &copy; &reg; &trade;</p>
     <div class="margin">
         <img src="../../assets/fbicon.png" alt="fbicon" class="imgmargin">
         <img src="../../assets/yticon.png" alt="yticon" class="imgmargin">

@@ -24,7 +24,7 @@
               <button class="subtract_button" @click="removeFromCart(product.details.product_id)">-</button>
             </td>
             <td>
-              <img :src="'../src/assets/' + product.details.product_image">
+              <img class="img" :src="'../src/assets/' + product.details.product_image">
             </td>
           </tr>
         </div>
@@ -105,6 +105,10 @@ export default {
 .bold {
   font-weight: bold;
   margin-top: 1em;
+}
+.img {
+    width: 50%;
+    height: auto;
 }
 .add_button {
   background-color: #4caf50; /* Green */

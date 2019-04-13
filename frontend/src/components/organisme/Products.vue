@@ -1,18 +1,8 @@
 <template>
   <div id="gridContainer">
     <div class="gridItem one">
-      <button
-        class="listgrid"
-        v-on:click="layout = 'list'"
-        v-bind:class="{ 'active': layout == 'list'}"
-        title="List"
-      >List View</button>
-      <button
-        class="listgrid"
-        v-on:click="layout = 'grid'"
-        v-bind:class="{ 'active': layout == 'grid'}"
-        title="Grid"
-      >Grid View</button>
+      <button class="listgrid" @click="layout = 'list'">List View</button>
+      <button class="listgrid" @click="layout = 'grid'">Grid View</button>
       <div v-if="layout === 'list'" class="list">
         <div v-for="(product, index) in products" :key="index">
           <div class="container">
